@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Program Client 1" type="Application" factoryName="Application" singleton="true">
+    <option name="MAIN_CLASS_NAME" value="Program" />
+    <module name="Node" />
+    <option name="PROGRAM_PARAMETERS" value="2 127.0.0.1 4001" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
