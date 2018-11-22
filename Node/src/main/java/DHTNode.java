@@ -9,10 +9,8 @@ import net.tomp2p.peers.PeerAddress;
 import net.tomp2p.peers.PeerMapChangeListener;
 import net.tomp2p.peers.PeerStatistic;
 import net.tomp2p.replication.IndirectReplication;
-import net.tomp2p.replication.Replication;
 import net.tomp2p.replication.ResponsibilityListener;
 import net.tomp2p.storage.Data;
-import sun.text.normalizer.Replaceable;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -27,7 +25,6 @@ public class DHTNode {
         Number160 myHash = Number160.createHash(peerId);
         Peer builtPeer = new PeerBuilder(myHash).ports(PORT_BASE + peerId).start();
         peer = new PeerBuilderDHT(builtPeer).start();
-
 
         this.registerBeanChangeListener();
         // Bootstrap to the initial peer
@@ -62,9 +59,8 @@ public class DHTNode {
                 .start();
 
 
-        System.out.println("I am "+ peer.peerAddress().peerSocketAddress());
+        System.out.println("I am " + peer.peerAddress().peerSocketAddress());
         System.out.println("I store data with key " + myHash.hashCode());
-
 
 
         // Put some default data
