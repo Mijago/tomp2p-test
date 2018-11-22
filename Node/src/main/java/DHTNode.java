@@ -33,7 +33,6 @@ public class DHTNode {
 
         // Start indirect replication and output messages
         new IndirectReplication(peer)
-                .rsync(true)
                 .addResponsibilityListener(new ResponsibilityListener() {
                     @Override
                     public FutureDone<?> meResponsible(Number160 number160) {
