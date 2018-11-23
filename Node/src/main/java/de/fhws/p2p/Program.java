@@ -1,3 +1,5 @@
+package de.fhws.p2p;
+
 import java.io.IOException;
 
 public class Program {
