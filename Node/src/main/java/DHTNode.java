@@ -62,7 +62,12 @@ public class DHTNode {
                     public FutureDone<?> otherResponsible(Number160 number160, PeerAddress peerAddress) {
                         // I know that the other node has this key
                         System.out.println("Other peer " + peerAddress.peerSocketAddress() + " is responsible for " + number160.hashCode() + ".");
-                        tryGetData(number160);
+                        try {
+                            Thread.sleep(500);
+                            tryGetData(number160);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
                         return null;
                     }
