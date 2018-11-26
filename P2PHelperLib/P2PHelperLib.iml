@@ -27,6 +27,5 @@
     <orderEntry type="library" name="Maven: net.tomp2p:tomp2p-dht:5.0-Beta8" level="project" />
     <orderEntry type="library" name="Maven: net.tomp2p:tomp2p-tracker:5.0-Beta8" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
-    <orderEntry type="module" module-name="P2PHelperLib" />
   </component>
 </module>

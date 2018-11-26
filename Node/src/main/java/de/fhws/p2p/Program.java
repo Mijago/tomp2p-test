@@ -1,5 +1,7 @@
 package de.fhws.p2p;
 
+import de.fhws.p2p.lib.PingHelper;
+
 import java.io.IOException;
 
 public class Program {
@@ -16,6 +18,7 @@ public class Program {
                 args[1],
                 Integer.parseInt(args[2])
         );
-        dhtNode.run();
+        PingHelper pingHelper = new PingHelper(dhtNode.getPeer());
+        pingHelper.start();
     }
 }
