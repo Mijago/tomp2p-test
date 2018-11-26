@@ -1,0 +1,25 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Node:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Node_jar</output-path>
+    <root id="archive" name="Node.jar">
+      <element id="module-output" name="Node" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/tomp2p/tomp2p-nat/5.0-Beta8/tomp2p-nat-5.0-Beta8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/io/netty/netty-transport/4.0.28.Final/netty-transport-4.0.28.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/tomp2p/tomp2p-core/5.0-Beta8/tomp2p-core-5.0-Beta8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/tomp2p/tomp2p-all/5.0-Beta8/tomp2p-all-5.0-Beta8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/bitlet/weupnp/0.1.2/weupnp-0.1.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/tomp2p/tomp2p-tracker/5.0-Beta8/tomp2p-tracker-5.0-Beta8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/googlecode/json-simple/json-simple/1.1/json-simple-1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/mapdb/mapdb/1.0.6/mapdb-1.0.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/io/netty/netty-common/4.0.28.Final/netty-common-4.0.28.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/io/netty/netty-buffer/4.0.28.Final/netty-buffer-4.0.28.Final.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/tomp2p/tomp2p-replication/5.0-Beta8/tomp2p-replication-5.0-Beta8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/tomp2p/tomp2p-android/5.0-Beta8/tomp2p-android-5.0-Beta8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/tomp2p/tomp2p-dht/5.0-Beta8/tomp2p-dht-5.0-Beta8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/ganyo/gcm-server/1.0.2/gcm-server-1.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/tomp2p/tomp2p-storage/5.0-Beta8/tomp2p-storage-5.0-Beta8.jar" path-in-jar="/" />
+      <element id="artifact" artifact-name="P2PHelperLib:jar" />
+    </root>
+  </artifact>
+</component>

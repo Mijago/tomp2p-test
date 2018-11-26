@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="P2PHelperLib:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/P2PHelperLib_jar</output-path>
+    <root id="archive" name="P2PHelperLib.jar">
+      <element id="module-output" name="P2PHelperLib" />
+    </root>
+  </artifact>
+</component>
