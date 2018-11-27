@@ -6,7 +6,6 @@ import net.tomp2p.futures.BaseFutureListener;
 import net.tomp2p.peers.PeerAddress;
 
 public class PingHelper {
-    private boolean running = false;
     private PeerDHT peer;
     private PingHelperThread thread;
 
@@ -15,13 +14,17 @@ public class PingHelper {
     }
 
     public boolean isRunning() {
-        return running;
+        return thread != null && thread.isRunning();
     }
 
     public PeerDHT getPeer() {
         return peer;
     }
 
+    /**
+     * Start the thread of this PingHelper.
+     * If there is already a thread running, it does nothing.
+     */
     public void start() {
         if (this.thread == null || !this.thread.isRunning()) {
             this.thread = new PingHelperThread(peer);
@@ -29,6 +32,9 @@ public class PingHelper {
         }
     }
 
+    /**
+     * Stop the thread of this PingHelper.
+     */
     public void stop() {
         if (this.thread != null && !this.thread.isRunning()) {
             this.thread.indicateStop();

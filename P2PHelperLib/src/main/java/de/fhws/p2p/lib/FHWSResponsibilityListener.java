@@ -48,7 +48,7 @@ public class FHWSResponsibilityListener implements ResponsibilityListener {
                 Thread.sleep(500);
 
                 DataHelper.tryGet(this.peer, number160, obj -> {
-                    System.out.println("Value of '" + number160.hashCode() + "' is " + obj);
+                    System.out.println("Value of '" + number160.hashCode() + "' is '" + obj + "' (type: '" + obj.getClass() + "')");
                 });
             } catch (InterruptedException e) {
                 e.printStackTrace();

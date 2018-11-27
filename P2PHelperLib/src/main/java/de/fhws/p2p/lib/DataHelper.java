@@ -4,6 +4,7 @@ import net.tomp2p.dht.FutureGet;
 import net.tomp2p.dht.PeerDHT;
 import net.tomp2p.futures.BaseFutureListener;
 import net.tomp2p.peers.Number160;
+import net.tomp2p.storage.Data;
 
 import java.io.IOException;
 
@@ -15,8 +16,14 @@ public class DataHelper {
         FutureGet fg = peer.get(number160).all().start().addListener(new BaseFutureListener<FutureGet>() {
             @Override
             public void operationComplete(FutureGet baseFuture) throws IOException, ClassNotFoundException, ClassCastException {
-                Object object = baseFuture.dataMap().values().iterator().next().object();
-                cb.onDone(object);
+                Data data = baseFuture.dataMap().values().iterator().next();
+                try {
+                    Object object = data.object();
+                    cb.onDone(object);
+                } catch (Exception e) {
+                    Object object = data.toBytes();
+                    cb.onDone(object);
+                }
             }
 
             @Override
