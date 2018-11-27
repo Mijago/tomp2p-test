@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Node" />
         <module name="P2PHelperLib" />
+        <module name="P2PJarProvider" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Node" target="8" />
       <module name="P2PHelperLib" target="8" />
+      <module name="P2PJarProvider" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

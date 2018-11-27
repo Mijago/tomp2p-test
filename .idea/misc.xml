@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/Node/pom.xml" />
         <option value="$PROJECT_DIR$/P2PHelperLib/pom.xml" />
+        <option value="$PROJECT_DIR$/P2PJarProvider/pom.xml" />
       </list>
     </option>
   </component>

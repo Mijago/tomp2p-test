@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Node/Node.iml" filepath="$PROJECT_DIR$/Node/Node.iml" />
       <module fileurl="file://$PROJECT_DIR$/P2PHelperLib/P2PHelperLib.iml" filepath="$PROJECT_DIR$/P2PHelperLib/P2PHelperLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/P2PJarProvider/P2PJarProvider.iml" filepath="$PROJECT_DIR$/P2PJarProvider/P2PJarProvider.iml" />
     </modules>
   </component>
 </project>
