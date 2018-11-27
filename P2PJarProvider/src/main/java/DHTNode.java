@@ -1,16 +1,17 @@
 import de.fhws.p2p.lib.FHWSResponsibilityListener;
+import de.fhws.p2p.lib.PeerMapListenerHelper;
 import net.tomp2p.dht.PeerBuilderDHT;
 import net.tomp2p.dht.PeerDHT;
+import net.tomp2p.futures.FutureBootstrap;
 import net.tomp2p.p2p.Peer;
 import net.tomp2p.p2p.PeerBuilder;
 import net.tomp2p.peers.Number160;
-import net.tomp2p.peers.PeerAddress;
-import net.tomp2p.peers.PeerMapChangeListener;
-import net.tomp2p.peers.PeerStatistic;
 import net.tomp2p.replication.IndirectReplication;
 import net.tomp2p.storage.Data;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -18,13 +19,15 @@ public class DHTNode {
     private static final int PORT_BASE = 4000;
     final private PeerDHT peer;
 
-    public DHTNode() throws IOException {
+    public DHTNode() throws IOException, PeerMapListenerHelper.AlreadyRegisteredException {
 
-        Number160 myHash = Number160.createHash("provider");
+        Number160 myHash = Number160.createHash(1);
         Peer builtPeer = new PeerBuilder(myHash).ports(4001).start();
         peer = new PeerBuilderDHT(builtPeer).start();
 
-        this.registerBeanChangeListener();
+        new PeerMapListenerHelper(peer).registerListenerToDHT();
+
+        bootstrapToTarget("127.0.0.1", 4001);
 
         System.out.println("I am " + peer.peerAddress().peerSocketAddress());
 
@@ -57,8 +60,6 @@ public class DHTNode {
 
     private void writeP2PJarToDHT() throws IOException {
         Number160 p2pjarhash = Number160.createHash("p2pjar");
-        System.out.println("I store data with key " + p2pjarhash.hashCode());
-
 
         byte[] jarBytes = Files.readAllBytes(Paths.get("out/artifacts/P2PHelperLib_jar/P2PHelperLib.jar"));
         // Put some default data
@@ -66,28 +67,19 @@ public class DHTNode {
                 .data(new Data(jarBytes))
                 .start()
                 .awaitUninterruptibly();
+
+        System.out.println("I stored the 'P2PHelperLib.jar' with the key 'p2pjar'. IntValue: '" + p2pjarhash.intValue() + "'");
+    }
+
+    private void bootstrapToTarget(String targetAddress, int targetPort) throws UnknownHostException {
+        FutureBootstrap fb = this.peer.peer().bootstrap().inetAddress(InetAddress.getByName(targetAddress)).ports(targetPort).start();
+        fb.awaitUninterruptibly();
+        if (fb.isSuccess()) {
+            peer.peer().discover().peerAddress(fb.bootstrapTo().iterator().next()).start().awaitUninterruptibly();
+        }
     }
 
     public PeerDHT getPeer() {
         return peer;
-    }
-
-    private void registerBeanChangeListener() {
-        peer.peerBean().peerMap().addPeerMapChangeListener(new PeerMapChangeListener() {
-            public void peerInserted(PeerAddress peerAddress, boolean verified) {
-                if (verified) {
-                    System.out.println("Peer inserted: peerAddress=" + peerAddress.peerSocketAddress() + ", verified=" + verified);
-                }
-            }
-
-            public void peerRemoved(PeerAddress peerAddress, PeerStatistic peerStatistic) {
-                System.out.println("Peer removed: peerAddress=" + peerAddress.peerSocketAddress() + ", peerStatistics=" + peerStatistic);
-            }
-
-            public void peerUpdated(PeerAddress peerAddress, PeerStatistic peerStatistic) {
-                // Get's quite spammy.
-                // System.out.println("Peer updated: peerAddress=" + peerAddress + ", peerStatistics=" + peerStatistic);
-            }
-        });
     }
 }

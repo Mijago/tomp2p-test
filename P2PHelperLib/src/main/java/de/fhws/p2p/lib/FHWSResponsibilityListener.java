@@ -9,6 +9,8 @@ import net.tomp2p.replication.ResponsibilityListener;
 public class FHWSResponsibilityListener implements ResponsibilityListener {
     private PeerDHT peer = null;
 
+    private boolean enableDataFetching = false;
+
     public FHWSResponsibilityListener() {
         this(null);
     }
@@ -19,16 +21,17 @@ public class FHWSResponsibilityListener implements ResponsibilityListener {
 
     @Override
     public FutureDone<?> meResponsible(Number160 number160) {
-        System.out.println("I am now responsible for " + number160.hashCode());
+        System.out.println("I am now responsible for '" + number160.intValue() + "'");
 
-        tryFetchInfo(number160);
+        if (enableDataFetching)
+            tryFetchInfo(number160);
         return null;
     }
 
     @Override
     public FutureDone<?> meResponsible(Number160 number160, PeerAddress peerAddress) {
         // the other node now knows that I have this key
-        System.out.println("I sync " + number160.hashCode() + " to " + peerAddress.peerSocketAddress());
+        System.out.println("I sync '" + number160.intValue() + "' to " + peerAddress.peerSocketAddress());
 
         return null;
     }
@@ -36,9 +39,10 @@ public class FHWSResponsibilityListener implements ResponsibilityListener {
     @Override
     public FutureDone<?> otherResponsible(Number160 number160, PeerAddress peerAddress) {
         // I know that the other node has this key
-        System.out.println("Other peer " + peerAddress.peerSocketAddress() + " is responsible for " + number160.hashCode() + ".");
+        System.out.println("Other peer " + peerAddress.peerSocketAddress() + " is responsible for '" + number160.intValue() + "'.");
 
-        tryFetchInfo(number160);
+        if (enableDataFetching)
+            tryFetchInfo(number160);
         return null;
     }
 
@@ -54,5 +58,14 @@ public class FHWSResponsibilityListener implements ResponsibilityListener {
                 e.printStackTrace();
             }
         }
+    }
+
+    public boolean isDataFetchingEnabled() {
+        return enableDataFetching;
+    }
+
+    public FHWSResponsibilityListener setEnableDataFetching(boolean enableDataFetching) {
+        this.enableDataFetching = enableDataFetching;
+        return this;
     }
 }

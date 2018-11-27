@@ -67,7 +67,7 @@ public class PingHelper {
                             if (future.isSuccess()) {
                                 //System.out.println("peer online (TCP):" + peerAddress);
                             } else {
-                                System.out.println("peer offline " + peerAddress.peerSocketAddress());
+                                System.out.println("Peer offline; peerAddress=" + peerAddress.peerSocketAddress());
                             }
                         }
 
